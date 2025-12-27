@@ -1,9 +1,11 @@
 
+'use client';
+
 import React, { useState } from 'react';
-import { SectionHeader } from './components/SectionHeader';
-import { CourseSyllabus } from './components/CourseSyllabus';
-import { GeminiService } from './services/geminiService';
-import { SyllabusModule, PricingTier } from './types';
+import { SectionHeader } from '../components/SectionHeader';
+import { CourseSyllabus } from '../components/CourseSyllabus';
+import { GeminiService } from '../services/geminiService';
+import { SyllabusModule, PricingTier } from '../types';
 
 const defaultModules: SyllabusModule[] = [
   {
@@ -48,7 +50,7 @@ const pricingTiers: PricingTier[] = [
   }
 ];
 
-const App: React.FC = () => {
+export default function Home() {
   const [modules, setModules] = useState<SyllabusModule[]>(defaultModules);
   const [isGenerating, setIsGenerating] = useState(false);
   const [customFocus, setCustomFocus] = useState('网站出海 + SEO + AI 实战小课');
@@ -70,12 +72,12 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Apple-style Navigation */}
-      <nav className="fixed top-0 w-full z-[100] apple-nav">
+    <main>
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-black/5">
         <div className="max-w-[1000px] mx-auto px-6 h-12 flex items-center justify-between text-[12px] font-medium text-[#1d1d1f]/80">
           <div className="flex items-center space-x-1 font-bold text-[#1d1d1f]">
-            <span className="text-lg">出海实战派</span>
+            <span className="text-lg tracking-tight">出海实战派</span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#syllabus" className="hover:text-[#1d1d1f] transition-colors">课程大纲</a>
@@ -89,7 +91,7 @@ const App: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-48 pb-24 px-6 bg-white overflow-hidden text-center">
+      <section className="relative pt-48 pb-24 px-6 text-center overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-[#1d1d1f] mb-6 leading-tight">
             网站出海。<br />
@@ -100,10 +102,10 @@ const App: React.FC = () => {
             只交付一套可落地的实战方法论。
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-            <a href="#pricing" className="apple-button-blue px-8 py-3 rounded-full font-bold text-lg">
+            <a href="#pricing" className="bg-[#0071e3] text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-[#0077ed] transition-colors">
               立即选购
             </a>
-            <a href="#syllabus" className="apple-link text-lg font-semibold flex items-center group">
+            <a href="#syllabus" className="text-[#0066cc] hover:underline text-lg font-semibold flex items-center group">
               进一步了解课程
               <svg className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
@@ -112,7 +114,6 @@ const App: React.FC = () => {
           </div>
         </div>
         
-        {/* Apple Style Product Image Placeholder */}
         <div className="mt-20 max-w-5xl mx-auto rounded-[30px] overflow-hidden bg-[#f5f5f7] border border-[#d2d2d7]">
            <div className="aspect-[21/9] flex items-center justify-center relative bg-gradient-to-tr from-[#f5f5f7] to-white">
               <div className="text-center">
@@ -127,31 +128,31 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Bento Grid - Audience */}
-      <section id="persona" className="py-24 apple-bg-grey px-6">
+      {/* Bento Grid */}
+      <section id="persona" className="py-24 bg-[#f5f5f7] px-6">
         <div className="max-w-7xl mx-auto">
           <SectionHeader 
             title="为你而生。" 
             subtitle="无论是寻找增长的站长，还是寻求变现的开发者。"
           />
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div className="md:col-span-8 bento-card p-12 flex flex-col justify-end min-h-[400px] relative overflow-hidden bg-white border border-[#d2d2d7]">
+            <div className="md:col-span-8 bg-white border border-[#d2d2d7] rounded-[22px] p-12 flex flex-col justify-end min-h-[400px] relative overflow-hidden">
                <div className="relative z-10">
                 <h3 className="text-4xl font-bold mb-4 text-[#1d1d1f]">技术开发者</h3>
                 <p className="text-xl text-[#86868b] max-w-md font-medium">利用技术优势，结合 AI 与 SEO 建立自动化流量资产，在全球市场实现被动收入。</p>
                </div>
                <div className="absolute top-12 right-12 text-7xl opacity-10 font-mono text-[#1d1d1f]">CODE</div>
             </div>
-            <div className="md:col-span-4 bento-card p-12 bg-white border border-[#d2d2d7]">
+            <div className="md:col-span-4 bg-white border border-[#d2d2d7] rounded-[22px] p-12">
               <h3 className="text-2xl font-bold mb-4 text-[#1d1d1f]">SEO 站长</h3>
               <p className="text-[#86868b] font-medium leading-relaxed">突破流量瓶颈，引入 AI 自动化生产流，提升 10 倍内容产出效率。</p>
               <div className="mt-8 text-5xl">🚀</div>
             </div>
-            <div className="md:col-span-5 bento-card p-12 bg-[#1d1d1f] text-white">
+            <div className="md:col-span-5 bg-[#1d1d1f] text-white rounded-[22px] p-12">
                <h3 className="text-2xl font-bold mb-4">内容创作者</h3>
                <p className="text-slate-400 font-medium">拒绝“搞钱”废话。在这里学习如何从零开始，在海外市场建立真实的影响力与变现点。</p>
             </div>
-            <div className="md:col-span-7 bento-card p-12 flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+            <div className="md:col-span-7 rounded-[22px] p-12 flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
                 <div className="text-center">
                   <h3 className="text-4xl font-black italic tracking-tighter mb-2">10X GROWTH</h3>
                   <p className="font-bold opacity-80">通过实战，让你的出海之路提速 10 倍。</p>
@@ -161,7 +162,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Syllabus */}
+      {/* Syllabus Generation */}
       <section id="syllabus" className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <SectionHeader 
@@ -184,7 +185,7 @@ const App: React.FC = () => {
                 disabled={isGenerating}
                 className="bg-[#0071e3] text-white px-8 py-3 rounded-full font-bold hover:bg-[#0077ed] transition-all shrink-0"
               >
-                {isGenerating ? '生成中' : 'AI 生成'}
+                {isGenerating ? '生成中...' : 'AI 生成'}
               </button>
             </div>
           </div>
@@ -193,17 +194,17 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Pricing - Apple Comparison Style */}
-      <section id="pricing" className="py-24 apple-bg-grey px-6">
+      {/* Pricing */}
+      <section id="pricing" className="py-24 bg-[#f5f5f7] px-6">
         <div className="max-w-7xl mx-auto">
           <SectionHeader 
-            title="找到最适合你的。 " 
+            title="找到最适合你的。" 
             subtitle="一次订阅，终身受益。支持随时升级。"
           />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingTiers.map((tier, i) => (
-              <div key={i} className="bg-white p-10 rounded-[30px] border border-[#d2d2d7] flex flex-col">
+              <div key={i} className="bg-white p-10 rounded-[30px] border border-[#d2d2d7] flex flex-col hover:shadow-xl transition-shadow">
                 <h3 className="text-2xl font-bold mb-2 text-[#1d1d1f]">{tier.name}</h3>
                 <p className="text-[#86868b] text-sm h-12 mb-6 font-medium leading-tight">{tier.description}</p>
                 <div className="mb-8">
@@ -222,17 +223,13 @@ const App: React.FC = () => {
                     ))}
                   </ul>
                 </div>
-                <button className={`w-full py-3 rounded-full font-bold text-sm ${
-                  tier.isPopular ? 'apple-button-blue' : 'bg-[#f5f5f7] text-[#1d1d1f] hover:bg-[#e8e8ed]'
+                <button className={`w-full py-3 rounded-full font-bold text-sm transition-all ${
+                  tier.isPopular ? 'bg-[#0071e3] text-white hover:bg-[#0077ed]' : 'bg-[#f5f5f7] text-[#1d1d1f] hover:bg-[#e8e8ed]'
                 }`}>
                   {tier.cta}
                 </button>
               </div>
             ))}
-          </div>
-          
-          <div className="mt-16 text-center">
-             <p className="text-[#86868b] text-sm font-medium">需要大客户或企业定制方案？ <a href="#" className="apple-link font-semibold">联系我们团队</a></p>
           </div>
         </div>
       </section>
@@ -242,12 +239,12 @@ const App: React.FC = () => {
         <div className="max-w-[1000px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-2">
-              <div className="flex items-center space-x-2 mb-6">
+              <div className="flex items-center space-x-2 mb-6 text-[#1d1d1f]">
                 <div className="w-8 h-8 bg-[#1d1d1f] rounded-lg flex items-center justify-center text-white font-bold italic">P</div>
                 <span className="text-lg font-bold">出海实战派</span>
               </div>
               <p className="text-[#86868b] text-sm leading-relaxed max-w-sm font-medium">
-                致力于为全球华人开发者、站长、创业者提供最真实、最硬核的出海实战指导。我们不讲虚无的认知，只谈落地的美金。
+                致力于为全球华人开发者、站长提供最真实、最硬核的出海实战指导。我们不讲虚无的认知，只谈落地的美金。
               </p>
             </div>
             <div>
@@ -259,24 +256,18 @@ const App: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h4 className="text-[12px] font-bold text-[#1d1d1f] uppercase tracking-wider mb-6">联系</h4>
+              <h4 className="text-[12px] font-bold text-[#1d1d1f] uppercase tracking-wider mb-6">联系方式</h4>
               <ul className="space-y-4 text-[12px] font-semibold text-[#86868b]">
                 <li>WeChat: RealExpert</li>
-                <li>Email: hello@exp.com</li>
+                <li>Email: hello@exp.io</li>
               </ul>
             </div>
           </div>
           <div className="pt-8 border-t border-[#d2d2d7] flex flex-col md:flex-row justify-between items-center text-[#86868b] text-[12px] font-medium">
             <p>© {new Date().getFullYear()} 出海实战派. Built for the Global Market.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-               <a href="#" className="hover:text-[#1d1d1f]">隐私政策</a>
-               <a href="#" className="hover:text-[#1d1d1f]">销售协议</a>
-            </div>
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   );
-};
-
-export default App;
+}

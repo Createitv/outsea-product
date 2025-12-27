@@ -1,5 +1,5 @@
 {
-  "name": "出海实战派 - 落地页生成器",
-  "description": "专为「网站出海 / SEO / AI 工具实战」定位打造的高转化率落地页，结合 Gemini AI 生成深度课程大纲。",
+  "name": "出海实战派 - Next.js 16 落地页",
+  "description": "基于 Next.js 16 App Router 与 Gemini AI 构建的高转化率课程落地页。",
   "requestFramePermissions": []
 }
